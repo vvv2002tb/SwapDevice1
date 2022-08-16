@@ -1,22 +1,42 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-
+import CompSignIn from '../components/CompSignIn.vue'
+import Comp404NotFound from '../views/Comp404NotFound.vue'
+import CompProfile from '../components/CompProfile.vue'
+import CompWallet from '../layoutcomp/CompWallet.vue'
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'login',
+    component: CompSignIn
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: function () {
-      return import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-    }
+    path: '/signup',  
+    name: 'signup',
+    component: HomeView
+  },
+  
+  {
+    path: '/register',
+    redirect: '/signup'
+  },
+  // 404 page 
+  {
+    path: '/:pathMatch(.*)*',
+    component: Comp404NotFound,
+  },
+  {
+    path: '/profile',  
+    name: 'profile',
+    component: CompProfile
+  },
+  {
+    path: '/profile/wallet',
+    name: 'wallet',
+    component: CompWallet
   }
+
+  
 ]
 
 const router = createRouter({
