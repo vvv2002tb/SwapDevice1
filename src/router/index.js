@@ -1,14 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import CompSignIn from '../components/CompSignIn.vue'
+import CompLogin from '../components/CompLogin.vue'
 import Comp404NotFound from '../views/Comp404NotFound.vue'
 import CompProfile from '../components/CompProfile.vue'
 import CompWallet from '../layoutcomp/CompWallet.vue'
+import CompHome from '../components/CompHome.vue'
 const routes = [
   {
     path: '/',
-    name: 'login',
-    component: CompSignIn
+    name: 'home',
+    component: CompHome
   },
   {
     path: '/signup',  
@@ -34,7 +35,14 @@ const routes = [
     path: '/profile/wallet',
     name: 'wallet',
     component: CompWallet
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: CompLogin
+
   }
+  
 
   
 ]

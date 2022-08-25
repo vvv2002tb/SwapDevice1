@@ -31,9 +31,17 @@
             </label>
           </div>
           <div class="row">
-            <button type="submit" class="py-3 text-center w-full rounded-lg bg-blue-700 text-white font-semibold shadow-md" >Sign Up</button>
+            
+            <button @click="register" type="submit" class="py-3 text-center w-full rounded-lg bg-blue-700 text-white font-semibold shadow-md" >Sign Up</button>
           </div>
         </form>
+
+
+      
+
+
+
+
         <div class="w-full text-center mt-6">
           <span class="font-semibold">
               I'm already a member.
@@ -49,26 +57,48 @@
 </template>
 
 <script> 
+import { getAuth, createUserWithEmailAndPassword } from "@firebase/auth";
 import { ref } from "vue";
 import { message } from 'ant-design-vue';
+
+
+
+
+
 export default {
   
 
   setup() {
-    const fullName = ref("");
+    
+
+    
     const email = ref("");
     const password = ref("");
 
 
-    function onSubmit() {
-      console.log({fullName, email, password});
-      message.success("Đăng kí thành công");
+    const register = () => {
+      createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+      .then((data) => {
+        console.log("Success");
+        app.$router.push({name: 'profile'})
 
+      })
+      .catch((error) => {
+        console.log("Error", error);
+        alert("Error", error);
+      });
     }
-    return { fullName, email, password, onSubmit}
-   
+
+    
+    return {
+      register,
+      
+      email,
+      password
+    }
     
   },
+  
  
     
   

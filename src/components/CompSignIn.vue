@@ -10,22 +10,22 @@
         </div>
     </div>
     <div class="container mx-auto px-8 mt-8"  > 
-        <form class="flex flex-col justify-start space-y-6">
+        <form @submit.prevent="onSubmit" class="flex flex-col justify-start space-y-6">
           
           <div class="row">
             <label class="flex flex-col" for="email">
               <span class="font-semibold">Email</span>
-              <input id="email" type="email" class="px-4 py-3 rounded-lg border border-zinc-500 mt-1" placeholder="Exemple@gmail.com"/> 
+              <input v-model="email" id="email" type="email" class="px-4 py-3 rounded-lg border border-zinc-500 mt-1" placeholder="Exemple@gmail.com"/> 
             </label>
           </div>
           <div class="row">
             <label class="flex flex-col" for="Password">
               <span class="font-semibold">Password</span>
-              <input id="Password" type="password" class="px-4 py-3 rounded-lg border border-zinc-500 mt-1" placeholder="Password"/> 
+              <input v-model="password" id="Password" type="password" class="px-4 py-3 rounded-lg border border-zinc-500 mt-1" placeholder="Password"/> 
             </label>
           </div>
           <div class="row">
-            <button type="submit" class="py-3 text-center w-full rounded-lg bg-blue-700 text-white font-semibold shadow-md" >Sign In</button>
+            <button @click="signin" type="submit" class="py-3 text-center w-full rounded-lg bg-blue-700 text-white font-semibold shadow-md" >Sign In</button>
           </div>
         </form>
         <div class="w-full text-center mt-6">
@@ -43,7 +43,32 @@
 </template>
 
 <script>
+import { getAuth, signInWithEmailAndPassword} from "@firebase/auth";
+import { ref } from "vue";
 export default {
+  setup() {
+
+    const email = ref("");
+    const password = ref("");
+
+    const signin = () => {
+      signInWithEmailAndPassword(getAuth(), email.value, password.value)
+      .then((data) => {
+        console.log("Success login"); 
+        this.$router.push({name: 'profile'})
+      })
+      .catch((error) => {
+        console.log("Error", error);
+        alert("Error", error);
+      });
+    }
+    return {
+      signin,
+      
+      email,
+      password
+    }
+  }
 
 }
 </script>

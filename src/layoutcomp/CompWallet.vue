@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen  bg-emerald-400">
+  <div class="h-screen ">
     <div class="row">
         <div class="container mx-auto p-8"> 
             <div class="flex flex-row justify-between ">
