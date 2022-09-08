@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <div class="row">
         <div class="container mx-auto px-8 py-2 mb-6 text-blue-600">
@@ -109,4 +109,21 @@ export default {
 
 <style>
 
+</style> -->
+
+<template>
+  <div class="h-screen text-13 px-4 py-8 bg-gradient-to-b from-purple-900 to-purple-700">
+    
+  </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
 </style>
+  

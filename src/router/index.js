@@ -5,12 +5,14 @@ import Comp404NotFound from '../views/Comp404NotFound.vue'
 import CompProfile from '../components/CompProfile.vue'
 import CompWallet from '../layoutcomp/CompWallet.vue'
 import CompHome from '../components/CompHome.vue'
+
 const routes = [
   {
     path: '/',
     name: 'home',
     component: CompHome
   },
+  
   {
     path: '/signup',  
     name: 'signup',
