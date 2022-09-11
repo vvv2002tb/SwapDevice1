@@ -7,5 +7,6 @@ export default defineConfig({
     legacy({
       targets: ['defaults', 'not IE 11']
     })
-  ]
+  ],
+  base: '/'
 })
